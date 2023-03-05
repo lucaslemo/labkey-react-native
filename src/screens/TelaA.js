@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
-
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import LabKeyTheme from '../themes/LabKeyTheme'
 
 export default function TelaA() {
+
+  const navigation = useNavigation();
+
+  const func = () => (
+    navigation.navigate('TelaB')
+  );
+
   return (
     <View style={styles.container}>
-      <Text style={{color:LabKeyTheme.OnBackGroundColor}}>Sou a tela A</Text>
+      <Text style={{color:LabKeyTheme.OnBackGroundColor, fontSize: 24}}>Sou a tela A</Text>
+      <Button title='Ir para tela B' onPress={func} />
     </View>
   );
 }
@@ -13,7 +21,7 @@ export default function TelaA() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: LabKeyTheme.BackGroundColor,
   },

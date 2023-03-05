@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from 'react-native';
-
 import LabKeyTheme from '../themes/LabKeyTheme'
 
 export default function HelloWorld() {

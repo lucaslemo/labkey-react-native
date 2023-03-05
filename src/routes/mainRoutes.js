@@ -1,18 +1,17 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomAppBar from '../components/CustomAppBar'
 import CustomDrawer from '../components/CustomDrawer';
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-
-// Carregando o Tema
 import AppKeyTheme from '../themes/LabKeyTheme';
+import TelaA from '../screens/TelaA';
+import TelaB from '../screens/TelaB';
+import TelaC from '../screens/TelaC';
 
+const Stack = createNativeStackNavigator();
 const { Screen, Navigator } = createDrawerNavigator();
 
-import  TelaA  from '../screens/TelaA';
-import  TelaB  from '../screens/TelaB';
-import  TelaC  from '../screens/TelaC';
-
-export function MainRoutes(){
+function MainScreens(){
   return(
     <Navigator
       drawerContent={props => <CustomDrawer { ...props } />}
@@ -23,16 +22,8 @@ export function MainRoutes(){
         drawerInactiveTintColor: '#999999',
         drawerLabelStyle: {marginLeft: -25}
       }}
-      initialRouteName='TelaC'
+      initialRouteName='TelaA'
     >
-    <Screen
-        name='TelaC'
-        component={ TelaC }
-        options={{
-          headerShown: false,
-          drawerItemStyle: { display: 'none' }
-        }}
-      />
       <Screen
         name='TelaA'
         component={ TelaA }
@@ -52,5 +43,25 @@ export function MainRoutes(){
         }}
       />
     </Navigator>
+  )
+}
+
+export function MainRoutes(){
+  return(
+    <Stack.Navigator
+      initialRouteName='TelaC'
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <Stack.Screen
+        name='TelaC'
+        component={ TelaC }
+      />
+      <Stack.Screen
+        name='home'
+        component={ MainScreens }
+      />
+    </Stack.Navigator>
   )
 }

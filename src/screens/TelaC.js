@@ -1,13 +1,27 @@
-import { StyleSheet, Text, Button } from 'react-native';
+import { StyleSheet, Text, Button, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { useNavigation, StackActions } from '@react-navigation/native'
 import LabKeyTheme from '../themes/LabKeyTheme'
 
-export default function TelaC({ navigation }) {
+export default function TelaC() {
+
+  const navigation = useNavigation();
+
+  const logar = () => {
+    navigation.dispatch(
+      StackActions.replace('home')
+    );
+
+  };
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={{color:LabKeyTheme.OnBackGroundColor}}>Sou a tela C</Text>
-      <Button title='Logar' onPress={() => navigation.navigate('TelaA')} />
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.text}>Login</Text>
+        </View>
+        <Text style={styles.text}>Sou a tela C</Text>
+        <Button title='Entrar' onPress={logar} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -15,8 +29,12 @@ export default function TelaC({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: LabKeyTheme.BackGroundColor,
+  },
+  text: {
+    fontSize: 24,
+    color: LabKeyTheme.OnBackGroundColor
   },
 });

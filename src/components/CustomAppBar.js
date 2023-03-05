@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AppBar, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { StackActions } from '@react-navigation/native'
 import { Alert, Modal, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 
 // Carregando o Tema
@@ -10,6 +11,11 @@ import AppKeyTheme from '../themes/LabKeyTheme';
 export default function CustomAppBar({ navigation }) {
 
   const [visible, setVisible] = useState(false);
+  const logout = () => {
+    navigation.dispatch(
+      StackActions.replace('TelaC')
+    );
+  }
 
   const options = [
     {
@@ -20,7 +26,7 @@ export default function CustomAppBar({ navigation }) {
     {
       title:'Sair',
       icon:'logout',
-      action: () => navigation.navigate('TelaC')
+      action: logout
     }
   ];
 
