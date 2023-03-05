@@ -1,20 +1,21 @@
+import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+// Carregando o Tema
+import AppKeyTheme from './src/themes/LabKeyTheme';
+
+// Carregando arquivo de rotas
+import { Routes }  from './src/routes/index';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <StatusBar 
+        style='light'
+        backgroundColor={AppKeyTheme.PrimaryVariantColor} 
+      />
+      <Routes />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
